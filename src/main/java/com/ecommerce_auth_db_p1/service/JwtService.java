@@ -3,8 +3,9 @@ package com.ecommerce_auth_db_p1.service;
 import java.security.Key;
 import java.util.Map;
 
-import com.ecommerce_auth_db_p1.entity.Users;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.ecommerce_auth_db_p1.entity.Users;
 
 
 public interface JwtService {

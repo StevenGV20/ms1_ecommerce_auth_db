@@ -1,6 +1,5 @@
 package com.ecommerce_auth_db_p1.controller;
 
-import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,13 +34,13 @@ public class RolController {
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<Void> addRol(@RequestBody Rol rol, UriComponentsBuilder ucb){
+	public ResponseEntity<Rol> addRol(@RequestBody Rol rol, UriComponentsBuilder ucb){
 		Rol rolCreated = rolService.saveRol(rol);
-		URI locationOfNewRolCreated = ucb
+		/*URI locationOfNewRolCreated = ucb
 				.path("rol/{id}")
 				.buildAndExpand(rolCreated.getRol_id())
-				.toUri();
-		return ResponseEntity.created(locationOfNewRolCreated).build();
+				.toUri();*/
+		return ResponseEntity.ok(rolCreated);
 	}
 	
 	@GetMapping("/{id}")
