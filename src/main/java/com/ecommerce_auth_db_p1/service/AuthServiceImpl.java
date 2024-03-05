@@ -1,7 +1,5 @@
 package com.ecommerce_auth_db_p1.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -10,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.ecommerce_auth_db_p1.entity.AuthResponse;
 import com.ecommerce_auth_db_p1.entity.LoginRequest;
-import com.ecommerce_auth_db_p1.entity.Rol;
 import com.ecommerce_auth_db_p1.entity.Users;
 import com.ecommerce_auth_db_p1.repository.RolRepository;
 import com.ecommerce_auth_db_p1.repository.UsersRepository;
@@ -48,10 +45,10 @@ public class AuthServiceImpl implements AuthService{
 
 	@Override
 	public AuthResponse register(Users request) {
-		Optional<Rol> rol = rolRepository.findById(Long.parseLong("1"));
+		/*Optional<Rol> rol = rolRepository.findById(Long.parseLong("1"));
+		request.setRol(rol.get());*/
+
 		request.setPassword(passwordEncoder.encode(request.getPassword()));
-		request.setRol(rol.get());
-		
 		userRepository.save(request);
 		
 		AuthResponse authResponse = new AuthResponse();
