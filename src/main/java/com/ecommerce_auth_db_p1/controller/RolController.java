@@ -24,6 +24,11 @@ public class RolController {
 	@Autowired
 	private RolService rolService;
 	
+	@GetMapping("/demo")
+	public String demo() {
+		return "roles";
+	}
+	
 	@GetMapping("/")
 	public ResponseEntity<List<Rol>> listRoles() {
 		return ResponseEntity.ok(rolService.getListRol());

@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ecommerce_auth_db_p1.entity.Rol;
 import com.ecommerce_auth_db_p1.entity.Users;
+import com.ecommerce_auth_db_p1.repository.RolRepository;
 import com.ecommerce_auth_db_p1.repository.UsersRepository;
 
 @Service
@@ -14,6 +16,9 @@ public class UserServiceImpl implements UsersService{
 	
 	@Autowired
 	private UsersRepository usersRepository;
+	
+	@Autowired
+	private RolRepository rolRepository;
 	
 	@Override
 	public List<Users> getListUsers() {
@@ -37,7 +42,13 @@ public class UserServiceImpl implements UsersService{
 
 	@Override
 	public List<Users> getListUsersByRol(Long rol) {
-		return usersRepository.findByRol(rol);
+		Rol rol_obj = rolRepository.findById(rol).get();
+		return usersRepository.findByRol(rol_obj);
+	}
+
+	@Override
+	public Optional<Users> getUserByUsername(String username) {
+		return usersRepository.findByUsername(username);
 	}
 
 }

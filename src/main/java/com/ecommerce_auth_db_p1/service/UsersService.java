@@ -12,5 +12,6 @@ public interface UsersService {
 	public abstract Users saveUser(Users user);
 	public abstract void deleteUser(Long id);
 	public abstract List<Users> getListUsersByRol(Long rol);
+	public abstract Optional<Users> getUserByUsername(String username);
 	
 }
